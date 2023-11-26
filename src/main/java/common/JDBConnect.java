@@ -33,6 +33,20 @@ public class JDBConnect {
 		}
 	}
 
+	public JDBConnect(String driver, String url, String id, String pwd) {
+		try {
+			// JDBC 드라이버 로드
+			Class.forName(driver);
+			
+			// DB에 연결
+			con = DriverManager.getConnection(url, id, pwd);
+			
+			System.out.println("DB 연결 성공(인수 생성자 1)");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	// 연결 해제(자원 반납)
 	public void close() {
 		try {
@@ -44,6 +58,8 @@ public class JDBConnect {
 				psmt.close();
 			if (con != null)
 				con.close();
+			
+			System.out.println("JDBC 자원해제");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
