@@ -30,3 +30,9 @@ create sequence seq_board_num
 	nomaxvalue 
 	nocycle
 	nocache;
+	
+-- 더미 데이터 생성
+insert into member (id, pass, name) values ('musthave', '1234', '머스트해브');
+
+insert into board (num, title, content, id, postdate, visitcount)
+values (seq_board_num.nextval, '제목1입니다', '내용1입니다','musthave', sysdate, 0);
